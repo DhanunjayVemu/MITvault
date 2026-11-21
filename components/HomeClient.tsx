@@ -252,18 +252,10 @@ export default function HomeClient() {
   }, [activeSemester, hasStreams, hasBranches, current, currentSubject]);
 
   return (
-    <div
-      className={`relative overflow-x-hidden ${
-        isHomeView ? "home-page h-[100svh] overflow-y-hidden" : "min-h-screen"
-      }`}
-    >
+    <div className="relative min-h-screen overflow-x-hidden">
       <RippleGrid />
       <div aria-hidden="true" className="page-frame" />
-      <div
-        className={`relative z-10 mx-auto flex max-w-[1040px] flex-col px-6 pt-36 sm:px-10 sm:pt-10 ${
-          isHomeView ? "h-[100svh] min-h-0 pb-4 sm:pb-8" : "min-h-screen pb-16"
-        }`}
-      >
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-[1040px] flex-col px-6 pb-16 pt-28 sm:px-10 sm:pt-10">
         {/* Header */}
         <header className="site-header flex flex-col gap-3 sm:gap-4">
           <div className="flex items-center justify-between gap-3 sm:items-start">
@@ -422,7 +414,7 @@ export default function HomeClient() {
         )}
 
         <footer
-          className={`site-footer mt-auto text-center ${
+          className={`site-footer mt-auto shrink-0 text-center ${
             isHomeView ? "pt-3 sm:pt-5" : "pt-14 sm:pt-16"
           }`}
         >
@@ -430,7 +422,7 @@ export default function HomeClient() {
             href="https://github.com/DhanunjayVemu/MITvault"
             target="_blank"
             rel="noopener noreferrer"
-            className="open-source-link inline-flex items-center gap-[0.45em] rounded-lg border border-border bg-surface px-2.5 py-1 font-serif text-sm leading-relaxed sm:px-3 sm:py-1.5 sm:text-base"
+            className="open-source-link inline-flex items-center gap-[0.45em] rounded-lg border border-border bg-surface px-2.5 py-1 font-serif text-sm leading-relaxed sm:translate-y-4 sm:px-3 sm:py-1.5 sm:text-base"
           >
             <span className="open-source-icon" aria-hidden="true" />
             <span className="open-source-label">Open Source</span>
