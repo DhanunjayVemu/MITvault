@@ -20,9 +20,9 @@ export const semColors = [
 
 export default function SemesterTabs({ selected, onSelect }: Props) {
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="semester-selector flex min-h-0 flex-1 flex-col">
       <p className="font-mono text-[13px] text-muted-2">Choose a semester</p>
-      <div className="mt-4 grid flex-1 grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="semester-grid mt-4 grid min-h-0 flex-1 grid-cols-2 gap-4 sm:grid-cols-4">
         {Array.from({ length: 8 }, (_, i) => i + 1).map((n) => (
           <SelectorTile
             key={n}

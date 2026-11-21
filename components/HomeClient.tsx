@@ -164,6 +164,7 @@ export default function HomeClient() {
       ? []
       : getSubjects(activeSemester, current.stream, current.cycle, papers, current.branch, curriculum);
   const currentSubject = subjectsInView.find((subject) => subject.code === current.subjectCode) ?? null;
+  const isHomeView = !activeSemester && !query.trim();
 
   const visibleSubjects = (() => {
     const q = query.trim().toLowerCase();
@@ -251,10 +252,18 @@ export default function HomeClient() {
   }, [activeSemester, hasStreams, hasBranches, current, currentSubject]);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
+    <div
+      className={`relative overflow-x-hidden ${
+        isHomeView ? "home-page h-[100svh] overflow-y-hidden" : "min-h-screen"
+      }`}
+    >
       <RippleGrid />
       <div aria-hidden="true" className="page-frame" />
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-[1040px] flex-col px-6 pb-16 pt-36 sm:px-10 sm:pt-10">
+      <div
+        className={`relative z-10 mx-auto flex max-w-[1040px] flex-col px-6 pt-36 sm:px-10 sm:pt-10 ${
+          isHomeView ? "h-[100svh] min-h-0 pb-4 sm:pb-8" : "min-h-screen pb-16"
+        }`}
+      >
         {/* Header */}
         <header className="site-header flex flex-col gap-3 sm:gap-4">
           <div className="flex items-center justify-between gap-3 sm:items-start">
@@ -411,6 +420,28 @@ export default function HomeClient() {
             <SemesterTabs selected={current.sem} onSelect={selectSemester} />
           </div>
         )}
+
+        <footer
+          className={`site-footer mt-auto text-center ${
+            isHomeView ? "pt-3 sm:pt-5" : "pt-14 sm:pt-16"
+          }`}
+        >
+          <p className="font-serif text-base leading-relaxed text-foreground sm:text-lg">
+            Found MITVault useful? Give us a{" "}
+            <span className="star-icon" aria-hidden="true" />{" "}
+            on{" "}
+            <a
+              href="https://github.com/DhanunjayVemu/MITvault"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="github-link"
+            >
+              GitHub
+            </a>
+            !
+          </p>
+          <p className="mt-1 font-sans text-sm text-muted">Contributions are welcome.</p>
+        </footer>
       </div>
     </div>
   );
