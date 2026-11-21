@@ -1,0 +1,277 @@
+@import "tailwindcss";
+
+/* Light theme (default) */
+:root {
+  --background: #fcf1e1;
+  --foreground: #1e1c18;
+  --muted: #66604f;
+  --muted-2: #928c78;
+  --border: #e2dcca;
+  --border-strong: #cec6ab;
+  --surface: #ffffff;
+  --surface-hover: #f4efe3;
+  --accent: #2f6fef;
+  --accent-soft: rgba(47, 111, 239, 0.1);
+  --grid-line: rgba(30, 28, 24, 0.06);
+  --box-surface: #f2ead9;
+  --box-surface-hover: #ece1cb;
+  --box-surface-active: #e7ecfb;
+
+  /* One warm, muted paper tint per semester (light theme) */
+  --sem-1: #f1e6d3;
+  --sem-2: #e6ecd8;
+  --sem-3: #dde7ea;
+  --sem-4: #ece0e6;
+  --sem-5: #f4e2d5;
+  --sem-6: #e2e6da;
+  --sem-7: #e9dfe9;
+  --sem-8: #d9e5e2;
+
+  /* Slightly darker semester hover colors */
+/* Darker semester hover colors */
+  --sem-1-hover: #dfcfb4;
+  --sem-2-hover: #cfdabf;
+  --sem-3-hover: #c4d5da;
+  --sem-4-hover: #d7c5cf;
+  --sem-5-hover: #e3c5b3;
+  --sem-6-hover: #cbd3bf;
+  --sem-7-hover: #d3c3d4;
+  --sem-8-hover: #c1d3ce;
+}
+
+/* Dark theme */
+.dark {
+  --background: #2b2926;
+  --foreground: #ece7dc;
+  --muted: #a9a294;
+  --muted-2: #7d766a;
+  --border: #46423b;
+  --border-strong: #5c574c;
+  --surface: #322f2b;
+  --surface-hover: #38352f;
+  --accent: #4c8dfa;
+  --accent-soft: rgba(76, 141, 250, 0.14);
+  --grid-line: rgba(255, 255, 255, 0.055);
+  --box-surface: #3a352c;
+  --box-surface-hover: #423c31;
+  --box-surface-active: #33394a;
+
+  /* One muted paper tint per semester (dark theme) */
+  --sem-1: #3d3729;
+  --sem-2: #343a2c;
+  --sem-3: #2e393c;
+  --sem-4: #3b3138;
+  --sem-5: #3f3129;
+  --sem-6: #313830;
+  --sem-7: #383140;
+  --sem-8: #2c3a37;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-grid-line: var(--grid-line);
+  --color-box-surface: var(--box-surface);
+  --color-box-surface-hover: var(--box-surface-hover);
+  --color-box-surface-active: var(--box-surface-active);
+
+  --color-sem-1: var(--sem-1);
+  --color-sem-2: var(--sem-2);
+  --color-sem-3: var(--sem-3);
+  --color-sem-4: var(--sem-4);
+  --color-sem-5: var(--sem-5);
+  --color-sem-6: var(--sem-6);
+  --color-sem-7: var(--sem-7);
+  --color-sem-8: var(--sem-8);
+
+  --color-sem-1-hover: var(--sem-1-hover);
+  --color-sem-2-hover: var(--sem-2-hover);
+  --color-sem-3-hover: var(--sem-3-hover);
+  --color-sem-4-hover: var(--sem-4-hover);
+  --color-sem-5-hover: var(--sem-5-hover);
+  --color-sem-6-hover: var(--sem-6-hover);
+  --color-sem-7-hover: var(--sem-7-hover);
+  --color-sem-8-hover: var(--sem-8-hover);
+
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light;
+  cursor: url("/cursor/cursor-light.svg") 4 4, auto;
+  overflow-x: hidden;
+}
+
+html.dark {
+  color-scheme: dark;
+  cursor: url("/cursor/cursor-dark.svg") 4 4, auto;
+}
+
+/* Buttons, links and form controls get their own "pointer" cursor from the
+   browser's default UA stylesheet, which overrides the custom cursor set on
+   <html> above. Force them back to the inherited (custom) cursor so it stays
+   visible and consistent everywhere, including on hover states. */
+button,
+a,
+input,
+select,
+textarea,
+label,
+summary,
+[role="button"],
+[role="link"] {
+  cursor: inherit;
+}
+
+/* Use the browser's compact text cursor inside the search bar instead of the
+   oversized site cursor. */
+.search-cursor {
+  cursor: text;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* The site content stays compact, while these wider centered rails give the
+   page the editorial frame shown in the reference design. */
+.page-frame {
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: min(calc(100% - 3rem), 1320px);
+  transform: translateX(-50%);
+  border-inline: 3px solid var(--border-strong);
+  pointer-events: none;
+}
+
+/* A single horizontal rule below the PYQvault header joins the two rails. */
+.site-header {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 50%;
+  bottom: 0;
+  width: 100vw;
+  height: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--border-strong) 15%,
+    var(--border-strong) 85%,
+    transparent 100%
+  );
+  clip-path: polygon(
+    0 50%,
+    15% 0,
+    85% 0,
+    100% 50%,
+    85% 100%,
+    15% 100%
+  );
+  pointer-events: none;
+}
+
+/* Mobile: drop the decorative side rails, and pin the title/path/search/
+   theme header to the top of the viewport so it stays put while the page
+   scrolls underneath it. The background is fully opaque so nothing behind
+   it (page content, the grid) shows through while scrolling. */
+@media (max-width: 639px) {
+  .page-frame {
+    display: none;
+  }
+
+  .site-header {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 40;
+    padding: 1.5rem 1.5rem 0.85rem;
+    background: var(--background);
+  }
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Subtle paper-grain texture, laid over a box's own background via
+   mix-blend-mode so it tints itself to whatever color sits underneath —
+   works unmodified across the light and dark themes. */
+.texture-paper {
+  position: relative;
+  isolation: isolate;
+}
+
+.texture-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/textures/paper.jpg");
+  background-size: 340px 255px;
+  background-repeat: repeat;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* A second, larger-scale pass of the same photo (rotated via a slightly
+   different tile size) breaks up visible repetition and adds depth. */
+.texture-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/textures/paper.jpg");
+  background-size: 520px 390px;
+  background-position: 40px 30px;
+  background-repeat: repeat;
+  mix-blend-mode: soft-light;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.dark .texture-paper::before {
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+}
+
+.dark .texture-paper::after {
+  mix-blend-mode: screen;
+  opacity: 0.06;
+}
