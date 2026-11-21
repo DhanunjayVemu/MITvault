@@ -426,21 +426,15 @@ export default function HomeClient() {
             isHomeView ? "pt-3 sm:pt-5" : "pt-14 sm:pt-16"
           }`}
         >
-          <p className="font-serif text-base leading-relaxed text-foreground sm:text-lg">
-            Found MITVault useful? Give us a{" "}
-            <span className="star-icon" aria-hidden="true" />{" "}
-            on{" "}
-            <a
-              href="https://github.com/DhanunjayVemu/MITvault"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="github-link"
-            >
-              GitHub
-            </a>
-            !
-          </p>
-          <p className="mt-1 font-sans text-sm text-muted">Contributions are welcome.</p>
+          <a
+            href="https://github.com/DhanunjayVemu/MITvault"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="open-source-link inline-flex items-center gap-[0.45em] rounded-lg border border-border bg-surface px-2.5 py-1 font-serif text-sm leading-relaxed sm:px-3 sm:py-1.5 sm:text-base"
+          >
+            <span className="open-source-dot" aria-hidden="true" />
+            <span className="open-source-label">Open Source</span>
+          </a>
         </footer>
       </div>
     </div>

@@ -276,28 +276,31 @@ body {
   opacity: 0.06;
 }
 
-/* The supplied star PNG is used as a mask so its color follows the current
-   theme without needing separate light and dark image files. */
-.star-icon {
+/* The supplied dot PNG is used as a mask so it follows both the current
+   theme and the link's hover color. */
+.open-source-dot {
   display: inline-block;
-  width: 0.9em;
-  height: 0.9em;
-  vertical-align: -0.04em;
+  width: 0.5em;
+  height: 0.5em;
+  flex: 0 0 0.5em;
   background-color: currentColor;
-  -webkit-mask: url("/star.png") center / contain no-repeat;
-  mask: url("/star.png") center / contain no-repeat;
+  -webkit-mask: url("/open-source-dot.png") center / contain no-repeat;
+  mask: url("/open-source-dot.png") center / contain no-repeat;
 }
 
-.github-link {
+.open-source-link {
   color: inherit;
+  transition: color 0.18s ease;
+}
+
+.open-source-label {
   text-decoration-line: underline;
   text-decoration-color: currentColor;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  transition: color 0.18s ease;
 }
 
-.github-link:hover {
+.open-source-link:hover {
   color: var(--accent);
 }
 
