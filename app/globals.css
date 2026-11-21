@@ -276,16 +276,16 @@ body {
   opacity: 0.06;
 }
 
-/* The supplied dot PNG is used as a mask so it follows both the current
+/* The supplied GitHub cat PNG is used as a mask so it follows both the current
    theme and the link's hover color. */
-.open-source-dot {
+.open-source-icon {
   display: inline-block;
-  width: 0.5em;
-  height: 0.5em;
-  flex: 0 0 0.5em;
-  background-color: currentColor;
-  -webkit-mask: url("/open-source-dot.png") center / contain no-repeat;
-  mask: url("/open-source-dot.png") center / contain no-repeat;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 1em;
+  background-color: var(--foreground);
+  -webkit-mask: url("/github-cat.png") center / contain no-repeat;
+  mask: url("/github-cat.png") center / contain no-repeat;
 }
 
 .open-source-link {
